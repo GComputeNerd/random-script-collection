@@ -12,9 +12,9 @@ lxc-start $choice
 lxc-attach -n $choice -- apt-get update
 lxc-attach -n $choice -- apt-get install -y git
 
-lxc-attach -n $choice -- git clone https://github.com/GComputeNerd/gist-collection-private.git
+lxc-attach -n $choice -- git clone https://github.com/GComputeNerd/random-script-collection.git
 
-lxc-attach -n $choice -- mv gist-collection-private/Ubuntu-LXC-GPG-Test/write_to_files_gpg.sh .
+lxc-attach -n $choice -- mv random-script-collection/Ubuntu-LXC-GPG-Test/write_to_files_gpg.sh .
 lxc-attach -n $choice -- chmod +x write_to_files_gpg.sh
 
 echo "Restarting Container...."
