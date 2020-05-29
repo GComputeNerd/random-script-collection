@@ -22,7 +22,7 @@ lxc-stop -n $choice
 lxc-start -n $choice
 
 echo "Installing Requirements"
-lxc-attach -n $choice -- apt-get install gpg vsftpd openssh-server
+lxc-attach -n $choice -- apt-get install -y gpg vsftpd openssh-server
 
 echo "Setting up gpg"
 lxc-attach -n $choice -- ./write_to_files_gpg.sh 2
