@@ -9,11 +9,13 @@ fi
 
 echo "Starting Container & Temporary PATH fix..."
 lxc-start $choice
-export PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin
-apt-get install -y curl
+lxc-attach -n $choice -- export PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin
+lxc-attach -n $choice -- apt-get install -y git
 
-curl https://raw.githubusercontent.com/GComputeNerd/gist-collection-private/master/Ubuntu-LXC-GPG-Test/write_to_files_gpg.sh?token=AHFBBH4UPL7SK5BDQRRORJ262CQEQ > write_to_files_gpg.sh
-chmod +x write_to_files_gpg.sh
+git clone https://github.com/GComputeNerd/gist-collection-private.git
+
+lxc-attach -n $choice -- mv gist-collection-private/write_to_files_gpg.sh .
+lxc-attach -n $choice -- chmod +x write_to_files_gpg.sh
 
 echo "Updating bashrc...."
 lxc-attach -n $choice -- ./write_to_files_gpg.sh 1
