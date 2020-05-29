@@ -9,6 +9,7 @@ fi
 
 echo "Starting Container & Temporary PATH fix..."
 lxc-start $choice
+lxc-attach -n $choice -- apt-get update
 lxc-attach -n $choice -- apt-get install -y git
 
 lxc-attach -n $choice -- git clone https://github.com/GComputeNerd/gist-collection-private.git
