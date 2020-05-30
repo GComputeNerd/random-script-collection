@@ -31,6 +31,7 @@ echo "Installing Requirements"
 lxc-attach -n $choice -- apt-get install -y gpg vsftpd openssh-server
 
 echo "Setting up gpg"
+lxc-attach -n $choice -- gpg --list-keys
 lxc-attach -n $choice -- ./write_to_files_gpg.sh 2
 
 echo "setting up vsftpd"
